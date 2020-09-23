@@ -3,12 +3,20 @@ import styled from 'styled-components'
 export const Container = styled.aside`
   height: 100%;
   grid-area: playing;
-  border: 1px solid white;
-`
+  padding: 0 1rem;
+  background-color: #121212;
 
-export const Content = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  place-items: center;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f0ece2;
+    margin-bottom: 1rem;
+  }
 `
