@@ -1,22 +1,28 @@
 import React, { useRef } from 'react'
 import Slider from 'react-slick'
-import { GrNext, GrPrevious } from 'react-icons/gr'
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 
-import MovieCard from '../MovieCard'
+import MovieCard, { MovieProps } from '../MovieCard'
 
 import * as S from './styles'
 
-const MovieSlider = () => {
+export interface Props {
+  movies: MovieProps[]
+  title: string
+}
+
+const MovieSlider = ({ movies, title }: Props) => {
   const slider = useRef<Slider>()
 
   const settings = {
     dots: false,
     arrows: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    centerPadding: '10px'
+    useTransform: true,
+    adaptiveHeight: true
   }
 
   function next() {
@@ -29,35 +35,28 @@ const MovieSlider = () => {
   return (
     <S.Container>
       <S.TitleContainer>
-        <S.Title>Now Playing</S.Title>
+        <S.Title>{title}</S.Title>
         <S.ActionsContainer>
           <button onClick={() => previous()}>
-            <GrPrevious size={18} />
+            <MdNavigateBefore size={24} />
           </button>
           <button onClick={() => next()}>
-            <GrNext size={18} />
+            <MdNavigateNext size={24} />
           </button>
         </S.ActionsContainer>
       </S.TitleContainer>
+      <hr />
       <Slider ref={slider} {...settings}>
-        <div>
-          <MovieCard />
-        </div>
-        <div>
-          <MovieCard />
-        </div>
-        <div>
-          <MovieCard />
-        </div>
-        <div>
-          <MovieCard />
-        </div>
-        <div>
-          <MovieCard />
-        </div>
-        <div>
-          <MovieCard />
-        </div>
+        {movies.map(movie => (
+          <MovieCard
+            id={movie.id}
+            title={movie.title}
+            genre_ids={movie.genre_ids}
+            vote_average={movie.vote_average}
+            backdrop_path={movie.backdrop_path}
+            name={movie.name}
+          />
+        ))}
       </Slider>
     </S.Container>
   )

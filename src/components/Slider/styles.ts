@@ -1,8 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 40rem;
   width: 100%;
+  padding: 1rem;
+
+  hr {
+    border: none;
+    height: 1px;
+    color: #333;
+    background-color: #333;
+    margin: 0 0 1rem 0;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -10,18 +18,26 @@ export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #f0ece2;
+`
+
+export const Title = styled.h3`
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f0ece2;
 `
 
 export const ActionsContainer = styled.div`
   button {
-    width: 5rem;
-    height: 5rem;
     cursor: pointer;
+    color: #888;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #f0ece2;
+    }
   }
 `
 
-export const Title = styled.h3`
-  font-size: 3rem;
-  color: #f0ece2;
+export const Content = styled.div`
+  transition: transform 300ms ease 100ms;
 `
