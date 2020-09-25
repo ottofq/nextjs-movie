@@ -37,7 +37,3 @@ export const ActionsContainer = styled.div`
     }
   }
 `
-
-export const Content = styled.div`
-  transition: transform 300ms ease 100ms;
-`

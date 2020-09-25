@@ -1,17 +1,16 @@
-import React, { useRef } from 'react'
+import React, { ReactChild, useRef } from 'react'
 import Slider from 'react-slick'
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
-
-import MovieCard, { MovieProps } from '../MovieCard'
 
 import * as S from './styles'
 
 export interface Props {
-  movies: MovieProps[]
   title: string
+  children: ReactChild[]
+  slidesToShow?: number
 }
 
-const MovieSlider = ({ movies, title }: Props) => {
+const SliderContent = ({ children, title, slidesToShow = 4 }: Props) => {
   const slider = useRef<Slider>()
 
   const settings = {
@@ -19,9 +18,8 @@ const MovieSlider = ({ movies, title }: Props) => {
     arrows: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 4,
-    useTransform: true,
     adaptiveHeight: true
   }
 
@@ -47,19 +45,10 @@ const MovieSlider = ({ movies, title }: Props) => {
       </S.TitleContainer>
       <hr />
       <Slider ref={slider} {...settings}>
-        {movies.map(movie => (
-          <MovieCard
-            id={movie.id}
-            title={movie.title}
-            genre_ids={movie.genre_ids}
-            vote_average={movie.vote_average}
-            backdrop_path={movie.backdrop_path}
-            name={movie.name}
-          />
-        ))}
+        {children}
       </Slider>
     </S.Container>
   )
 }
 
-export default MovieSlider
+export default SliderContent
