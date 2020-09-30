@@ -1,30 +1,31 @@
 import React from 'react'
 
-import * as S from './styles'
+import backgroundImage from '../../assets/background.jpg'
 
-interface Props {
-  imageURL: string
-}
+import * as S from './styles'
 
 const MainBanner = () => {
   return (
     <S.Container>
-      <S.DescriptionContainer>
-        <S.Title>Mulan</S.Title>
-        <S.ContainerInfo>
-          <S.Genres>Drama,Action,War,Fantasy,Adventure</S.Genres>
-          <S.Avarage>7.5/10</S.Avarage>
-        </S.ContainerInfo>
-        <S.Description>
-          When the Emperor of China issues a decree that one man per family must
-          serve in the Imperial Chinese Army to defend the country from Huns,
-          Hua Mulan, the eldest daughter of an honored warrior, steps in to take
-          the place of her ailing father. She is spirited, determined and quick
-          on her feet. Disguised as a man by the name of Hua Jun, she is tested
-          every step of the way and must harness her innermost strength and
-          embrace her true potential.
-        </S.Description>
-      </S.DescriptionContainer>
+      <S.Title>Next Movies</S.Title>
+      <S.Description>
+        <p>
+          Simple project for movies pages make with{' '}
+          <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
+            Next.js
+          </a>
+        </p>
+        <p>
+          Movies data provided by{' '}
+          <a
+            href="https://www.themoviedb.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            The Movie Database API
+          </a>
+        </p>
+      </S.Description>
     </S.Container>
   )
 }
