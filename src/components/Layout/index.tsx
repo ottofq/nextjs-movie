@@ -2,8 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 
 import Header from '../Header'
-import SidebarActions from '../SidebarActions'
-import SidebarMovies from '../SidebarMovies'
+import Footer from '../Footer'
 
 import * as S from './styles'
 
@@ -13,11 +12,10 @@ const Layout: React.FC = ({ children }) => {
       <Head>
         <title>Movies</title>
       </Head>
-      <Header />
       <S.Container>
-        <SidebarActions />
-        {children}
-        <SidebarMovies />
+        <Header />
+        <S.Main>{children}</S.Main>
+        <Footer />
       </S.Container>
     </>
   )
