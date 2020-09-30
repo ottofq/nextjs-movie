@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
   align-items: center;
-  color: #f0ece2;
+  color: ${props => props.color || '#f0ece2'};
   border: 1px solid #333;
   border-radius: 0.5rem;
   display: flex;

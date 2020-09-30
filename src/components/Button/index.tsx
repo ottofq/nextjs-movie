@@ -4,13 +4,15 @@ import * as S from './styles'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   Icon?: ReactElement
-  children: ReactChild
+  children?: ReactChild
+  color?: string
+  bordered?: boolean
 }
 
-const Button = ({ Icon, children, ...rest }: Props) => {
+const Button = ({ Icon, children, color, ...rest }: Props) => {
   return (
-    <S.Button type="button" {...rest}>
-      {Icon ? Icon : ''}
+    <S.Button type="button" color={color} {...rest}>
+      {Icon}
       {children}
     </S.Button>
   )
