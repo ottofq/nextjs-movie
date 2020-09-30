@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: grid;
   grid-template-columns: 32.4rem auto;
-  padding: 0 1rem;
-  height: 100%;
+  min-height: 40rem;
   width: 100%;
 `
 
@@ -14,15 +13,14 @@ export const PosterImage = styled.img`
   border-radius: 0.5rem;
 `
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled.section`
   display: flex;
   padding: 0 2rem;
   flex-direction: column;
-  flex: 1;
   gap: 0.8rem;
 `
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,7 +40,7 @@ export const Title = styled.h1`
   color: #f0ece2;
 `
 
-export const Facts = styled.div`
+export const Facts = styled.section`
   width: 100%;
   position: relative;
 
@@ -93,6 +91,46 @@ export const CrewsNameContainer = styled.ul`
 
 export const ActorName = styled.p`
   font-size: 1.8rem;
+`
+
+export const FavButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  span {
+    display: none;
+    left: 100%;
+    position: absolute;
+    background-color: #222;
+    border-radius: 4px;
+    color: #f0ece2;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-width: 0.5rem;
+      border-style: solid;
+      border-color: transparent #222 transparent transparent;
+    }
+  }
+
+  &:hover {
+    span {
+      display: inline;
+      opacity: 1;
+    }
+  }
 `
 
 export const ActionsContainer = styled.div`
