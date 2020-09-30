@@ -6,11 +6,18 @@ export const Container = styled.div`
   gap: 0.5rem;
   height: 20rem;
   max-width: 25rem;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 export const Image = styled.img`
   height: 100%;
   width: 100%;
+  max-height: 15rem;
 `
 
 export const MovieName = styled.p`
