@@ -18,8 +18,6 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const movies = [{ id: 1, title: 'mulan' }]
-
   return (
     <ThemeProvider theme={dark}>
       <Layout>
