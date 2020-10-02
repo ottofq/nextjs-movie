@@ -25,6 +25,7 @@ export default createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
   }
+
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {
@@ -38,17 +39,25 @@ export default createGlobalStyle`
   }
   a {
     text-decoration: none;
+    color:inherit;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
   button {
     background: none;
     border: 0;
     padding: 0;
   }
+
   img {
     display: block;
-  	height: auto;
-  	max-width: 100%;
+    height: auto;
+    max-width: 100%;
   }
+
   svg {
     fill: currentColor;
   }
@@ -75,6 +84,7 @@ export default createGlobalStyle`
   input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
   }
+
 
   body {
     background: ${props => props.theme.colors.background};
