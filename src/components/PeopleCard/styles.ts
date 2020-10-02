@@ -2,6 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 13.4rem;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 export const Image = styled.img`
