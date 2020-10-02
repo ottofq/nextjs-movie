@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="icon" href="https://www.omdbapi.com/favicon.ico" />
+          <link rel="icon" href={favicon} />
         </Head>
         <body>
           <Main />
