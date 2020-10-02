@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100%;
   padding: 1rem;
 
+  a {
+    color: inherit;
+  }
+
   hr {
     border: none;
     height: 1px;
