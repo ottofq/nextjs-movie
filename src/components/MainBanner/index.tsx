@@ -1,7 +1,5 @@
 import React from 'react'
 
-import backgroundImage from '../../assets/background.jpg'
-
 import * as S from './styles'
 
 const MainBanner = () => {
