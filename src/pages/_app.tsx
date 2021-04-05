@@ -8,6 +8,7 @@ import 'nprogress/nprogress.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+import { FavoritesProvider } from '../context/FavoritesMovies'
 import Layout from '../components/Layout'
 import GlobalStyle from '../styles/global'
 import dark from '../styles/dark'
@@ -21,7 +22,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={dark}>
       <Layout>
-        <Component {...pageProps} />
+        <FavoritesProvider>
+          <Component {...pageProps} />
+        </FavoritesProvider>
       </Layout>
       <GlobalStyle />
     </ThemeProvider>

@@ -11,7 +11,7 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  width: 16rem;
+  gap: 2rem;
 
   a {
     display: flex;
@@ -36,7 +36,6 @@ export const ActionsContainer = styled.nav`
   ul {
     display: flex;
     height: 100%;
-    width: 10rem;
     color: #f0ece2;
     align-items: center;
     justify-content: center;
@@ -45,6 +44,10 @@ export const ActionsContainer = styled.nav`
     li {
       a {
         color: inherit;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.8rem;
       }
     }
   }

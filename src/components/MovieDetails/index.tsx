@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useMemo } from 'react'
 import { format, parseISO } from 'date-fns'
 import { AiFillStar } from 'react-icons/ai'
 import { BsHeartFill, BsFillEyeFill } from 'react-icons/bs'
 import { FaPlay } from 'react-icons/fa'
 import slugify from 'slugify'
 
+import { FavoriteContext } from '../../context/FavoritesMovies'
 import Button from '../Button'
 import TrailerModal from '../TrailerModal'
 import { MovieProps } from '../MovieCard'
@@ -32,6 +33,7 @@ interface Props {
 
 const MovieDetails = ({ movie, crews, trailer }: Props) => {
   const [showModal, setShowModal] = useState(false)
+  const { favoriteMovies, dispatch } = useContext(FavoriteContext)
 
   function formatDate(date: string) {
     const parseDate = parseISO(date)
@@ -51,6 +53,19 @@ const MovieDetails = ({ movie, crews, trailer }: Props) => {
   function openModal() {
     setShowModal(true)
   }
+
+  function addFavorites() {
+    dispatch({ type: 'FAV:ADD_MOVIE', payload: { movie } })
+  }
+
+  function removeFavorites() {
+    dispatch({ type: 'FAV:REMOVE_MOVIE', payload: { id: movie.id } })
+  }
+
+  const liked = useMemo(
+    () => favoriteMovies.find(favMovie => favMovie.id === movie.id),
+    [favoriteMovies]
+  )
 
   return (
     <S.Container>
@@ -92,10 +107,20 @@ const MovieDetails = ({ movie, crews, trailer }: Props) => {
           )}
 
           <Button Icon={<BsFillEyeFill size={20} />}>Add Watch List</Button>
-          <S.FavButton>
-            <BsHeartFill size={20} />
-            <span data-text="Add to favorites">Add to favorites</span>
-          </S.FavButton>
+
+          {liked ? (
+            <S.FavButton onClick={() => removeFavorites()}>
+              <BsHeartFill color="#F00" size={20} />
+              <span data-text="Remove from favorites">
+                Remove from favorites
+              </span>
+            </S.FavButton>
+          ) : (
+            <S.FavButton onClick={() => addFavorites()}>
+              <BsHeartFill size={20} />
+              <span data-text="Add to favorites">Add to favorites</span>
+            </S.FavButton>
+          )}
         </S.ActionsContainer>
       </S.ContentContainer>
       {showModal && (

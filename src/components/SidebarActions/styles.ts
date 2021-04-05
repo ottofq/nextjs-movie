@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.aside`
-  height: 100%;
+  height: 100vh;
   grid-area: actions;
-  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 `

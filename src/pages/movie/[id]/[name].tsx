@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 import MovieDetails, {
   CrewProps,
@@ -12,6 +12,8 @@ import SliderMovies from '../../../components/SliderMovies'
 
 import api from '../../../services/api'
 import * as S from '../../../styles/pages/Movie'
+import slugify from 'slugify'
+import { useRouter } from 'next/router'
 
 interface Props {
   movie: MovieProps
@@ -21,8 +23,46 @@ interface Props {
   cast: PeopleProps[]
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { id } = params
+export const getStaticPaths: GetStaticPaths = async () => {
+  const nowPlayingMoviesResponse = await api.get('/movie/now_playing')
+  const trendingMoviesWeekResponse = await api.get('trending/movie/week')
+  const tvPopularResponse = await api.get('tv/popular')
+  const topRatedResponse = await api.get('movie/top_rated')
+  const upcomingMoviesResponse = await api.get('/movie/upcoming')
+
+  const nowPlayingMovies = nowPlayingMoviesResponse.data.results
+  const trendingMoviesWeek = trendingMoviesWeekResponse.data.results
+  const tvPopular = tvPopularResponse.data.results
+  const topRated = topRatedResponse.data.results
+  const upcoming = upcomingMoviesResponse.data.results
+
+  const allMovies = [
+    ...nowPlayingMovies,
+    ...trendingMoviesWeek,
+    ...tvPopular,
+    ...topRated,
+    ...upcoming
+  ]
+
+  const movies = allMovies.filter(movie => typeof movie.title === 'string')
+
+  const paths = movies.map(movie => {
+    return {
+      params: {
+        id: String(movie.id),
+        name: slugify(movie.title)
+      }
+    }
+  })
+
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export const getStaticProps: GetStaticProps = async context => {
+  const { id } = context.params
 
   const movieDataResponse = await api.get(`/movie/${id}`)
   const videoDataResponse = await api.get(`/movie/${id}/videos`)
@@ -51,6 +91,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 }
 
 const Movie: React.FC<Props> = ({ movie, similar, trailer, cast, crews }) => {
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    return <div>Carregando...</div>
+  }
+
   return (
     <>
       <Head>

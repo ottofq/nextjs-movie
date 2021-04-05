@@ -1,33 +1,30 @@
 import React from 'react'
 import Link from 'next/link'
-import MovieCard, { MovieProps } from '../MovieCard'
+import slugify from 'slugify'
 
+import MovieCard, { MovieProps } from '../MovieCard'
 import * as S from './styles'
-import axios from 'axios'
-import useSWR from 'swr'
 
 export interface Props {
   movies: MovieProps[]
 }
 
-const SidebarMovies = () => {
-  const { data: response, error } = useSWR('/api/movies', axios, {
-    refreshInterval: 0
-  })
-
-  if (error) return <div>failed to load</div>
-  if (!response) return <div>loading...</div>
-
-  const movies = response.data.movies
-
+const SidebarMovies = ({ movies }: Props) => {
   return (
     <S.Container>
       <h2>Upcoming Movies</h2>
       <ul>
         {movies.map(movie => (
-          <li key={movie.id}>
-            <MovieCard movie={movie} />
-          </li>
+          <Link
+            key={movie.id}
+            href={`/movie/${movie.id}/${slugify(movie.title)}`}
+          >
+            <a>
+              <li>
+                <MovieCard movie={movie} />
+              </li>
+            </a>
+          </Link>
         ))}
       </ul>
     </S.Container>

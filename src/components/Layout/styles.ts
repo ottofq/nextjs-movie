@@ -14,6 +14,7 @@ export const Container = styled.div`
 `
 
 export const Main = styled.main`
+  min-height: calc(100vh - 23rem);
   height: 100%;
   width: 100%;
   grid-area: content;

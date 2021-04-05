@@ -1,9 +1,10 @@
 import React from 'react'
-import { BsHeartFill, BsFillEyeFill } from 'react-icons/bs'
 
 import * as S from './styles'
 import Logo from '../../assets/movie.svg'
 import Link from 'next/link'
+
+import SearchInput from '../SearchInput'
 
 const Header = () => {
   return (
@@ -15,22 +16,19 @@ const Header = () => {
             <h1>Next Movies</h1>
           </a>
         </Link>
+        <SearchInput />
       </S.LogoContainer>
 
       <S.ActionsContainer>
         <ul>
           <li>
             <Link href="/favorites">
-              <a href="">
-                <BsHeartFill size={25} />
-              </a>
+              <a>Favorites Movies</a>
             </Link>
           </li>
           <li>
             <Link href="/watchlist">
-              <a href="">
-                <BsFillEyeFill size={25} />
-              </a>
+              <a href="">Watchlist</a>
             </Link>
           </li>
         </ul>

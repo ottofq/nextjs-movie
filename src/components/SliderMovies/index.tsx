@@ -17,8 +17,8 @@ const MovieSlider = ({ movies, title }: Props) => {
     <Slider title={title}>
       {movies.map(movie => (
         <Link
-          key={movie.id}
           href={`/movie/${movie.id}/${slugify(movie.title)}`}
+          key={movie.id}
         >
           <a>
             <MovieCard movie={movie} />

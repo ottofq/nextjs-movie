@@ -11,7 +11,7 @@ const Footer = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <AiFillGithub size={40} />
+        <AiFillGithub title="Github" size={40} />
       </a>
     </S.Container>
   )

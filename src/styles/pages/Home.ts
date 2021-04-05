@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  grid-area: content;
+  display: flex;
   height: 100%;
-  border: 1px solid white;
+  width: 100%;
+`
+export const MainContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `

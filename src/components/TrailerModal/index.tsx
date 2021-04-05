@@ -3,7 +3,7 @@ import React, { memo, useRef, useEffect, useCallback } from 'react'
 import * as S from './styles'
 
 interface Props {
-  closeModal: Function
+  closeModal: () => void
   youtubeId: string
 }
 
@@ -43,7 +43,7 @@ const TrailerModal = ({ closeModal, youtubeId }: Props) => {
           height="600"
           allowFullScreen
           src={`https://www.youtube.com/embed/${youtubeId}`}
-        ></iframe>
+        />
       </S.Content>
     </S.Container>
   )

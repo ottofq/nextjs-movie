@@ -2,9 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.aside`
   height: 100%;
-  grid-area: playing;
   padding: 0 1rem;
-  background-color: #121212;
 
   ul {
     display: flex;
